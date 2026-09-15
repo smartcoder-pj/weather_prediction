@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather Classifier</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: linear-gradient(
+                135deg,
+                #2193b0,
+                #6dd5ed
+            );
+        }
+
+        .container {
+            width: 400px;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 13px;
+
+            border: none;
+            border-radius: 8px;
+
+            background: #2193b0;
+            color: white;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #176d82;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            text-align: center;
+
+            border-radius: 10px;
+            background: #f1f8ff;
+        }
+
+        .result h2 {
+            color: #2193b0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🌤️ Weather Classifier</h1>
+
+    <p class="subtitle">
+        SVM Weather Prediction
+    </p>
+
+    <form action="/predict" method="POST">
+
+        <label>Temperature (°C)</label>
+        <input
+            type="number"
+            name="temperature"
+            step="0.1"
+            placeholder="Example: 30"
+            required
+        >
+
+        <label>Humidity (%)</label>
+        <input
+            type="number"
+            name="humidity"
+            step="0.1"
+            placeholder="Example: 70"
+            required
+        >
+
+        <label>Wind Speed (km/h)</label>
+        <input
+            type="number"
+            name="windspeed"
+            step="0.1"
+            placeholder="Example: 10"
+            required
+        >
+
+        <button type="submit">
+            Predict Weather
+        </button>
+
+    </form>
+
+    {% if prediction %}
+
+    <div class="result">
+
+        {% if prediction == "Sunny" %}
+            <h2>☀️ Sunny</h2>
+
+        {% elif prediction == "Cloudy" %}
+            <h2>☁️ Cloudy</h2>
+
+        {% elif prediction == "Rainy" %}
+            <h2>🌧️ Rainy</h2>
+
+        {% else %}
+            <h2>{{ prediction }}</h2>
+        {% endif %}
+
+        <p>Predicted weather condition</p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

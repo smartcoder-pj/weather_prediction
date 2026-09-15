@@ -1,0 +1,13 @@
+Temperature,Humidity,WindSpeed,Weather
+32,40,8,Sunny
+30,45,10,Sunny
+35,35,7,Sunny
+31,42,9,Sunny
+28,50,12,Cloudy
+27,60,13,Cloudy
+25,65,15,Cloudy
+29,55,11,Cloudy
+22,80,20,Rainy
+20,85,25,Rainy
+21,90,22,Rainy
+23,82,18,Rainy
